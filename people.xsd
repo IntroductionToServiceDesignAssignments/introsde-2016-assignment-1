@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="people" type="peopleType"/>
+  <xs:complexType name="healthprofileType">
+    <xs:sequence>
+    <xs:element type="xs:dateTime" name="lastupdate"/>
+      <xs:element type="xs:float" name="weight"/>
+      <xs:element type="xs:float" name="height"/>
+      <xs:element type="xs:float" name="bmi"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="firstname"/>
+      <xs:element type="xs:string" name="lastname"/>
+      <xs:element type="xs:string" name="birthdate"/>
+      <xs:element type="healthprofileType" name="healthprofile"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="peopleListType">
+    <xs:sequence>
+      <xs:element type="personType" name="person" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="peopleType">
+    <xs:sequence>
+      <xs:element type="peopleListType" name="peopleList"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
